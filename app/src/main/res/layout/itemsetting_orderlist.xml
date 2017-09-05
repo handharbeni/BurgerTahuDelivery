@@ -5,18 +5,22 @@
     android:layout_height="wrap_content"
     android:background="@drawable/background_rounded">
     <LinearLayout
-        android:padding="20dp"
+        android:padding="@dimen/paddingother"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:padding="10dp"
+            android:textSize="@dimen/fontsizeother"
+            android:padding="@dimen/paddingother"
+            android:layout_marginLeft="@dimen/paddingitemmenu"
             android:id="@+id/orderhistory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Order History"/>
         <TextView
-            android:padding="10dp"
+            android:textSize="@dimen/fontsizeother"
+            android:padding="@dimen/paddingother"
+            android:layout_marginLeft="@dimen/paddingitemmenu"
             android:layout_marginTop="25dp"
             android:id="@+id/offers"
             android:layout_width="match_parent"

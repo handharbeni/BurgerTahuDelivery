@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="listorder">
+        <item>@string/order_history</item>
+        <item>@string/offers</item>
+    </string-array>
+</resources>

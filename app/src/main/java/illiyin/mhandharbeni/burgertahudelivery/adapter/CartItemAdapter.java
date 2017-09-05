@@ -25,6 +25,7 @@ import illiyin.mhandharbeni.burgertahudelivery.R;
 import illiyin.mhandharbeni.burgertahudelivery.adapter.utils.CartUtil;
 import illiyin.mhandharbeni.databasemodule.ModelCart;
 import illiyin.mhandharbeni.realmlibrary.Crud;
+import illiyin.mhandharbeni.utilslibrary.NumberFormat;
 import io.realm.RealmResults;
 
 /**
@@ -39,6 +40,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.MyView
     private ModelCart modelCart;
 
     private CartUtil cartUtil;
+    private NumberFormat numberFormat;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView image;
@@ -81,7 +83,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.MyView
             if (menuResult.size() > 0){
                 ModelCart model = (ModelCart) menuResult.get(0);
                 String nameMenu = model.getNama();
-                String priceMenu = model.getHarga();
+                String priceMenu = numberFormat.format(Double.valueOf(model.getHarga()));
                 String descMenu = model.getNama();
                 String katMenu = model.getKategori();
                 String gambar = model.getGambar();

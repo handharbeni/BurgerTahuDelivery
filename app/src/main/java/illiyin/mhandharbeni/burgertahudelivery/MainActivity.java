@@ -3,6 +3,7 @@ package illiyin.mhandharbeni.burgertahudelivery;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -16,6 +17,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Locale;
 
 import illiyin.mhandharbeni.burgertahudelivery.fragment.FragmentFavorite;
 import illiyin.mhandharbeni.burgertahudelivery.fragment.FragmentHome;
@@ -37,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements SessionListener {
     private Fragment fragment;
     BottomNavigationView navigation;
     private TextView cartx;
+    private ImageView flagen, flagind;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -78,8 +82,44 @@ public class MainActivity extends AppCompatActivity implements SessionListener {
 
         session = new Session(getApplicationContext(), this);
         runServices();
+        String lang = session.getCustomParams("LANGUAGE", "en");
+        String languageToLoad  = lang;
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
         setContentView(R.layout.activity_main);
         navigation = (BottomNavigationView) findViewById(R.id.navigation);
+
+        flagen = (ImageView) findViewById(R.id.flagen);
+        flagind = (ImageView) findViewById(R.id.flagind);
+
+        flagen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                session.setCustomParams("LANGUAGE", "en");
+                finish();
+                Intent i = getBaseContext().getPackageManager()
+                        .getLaunchIntentForPackage( getBaseContext().getPackageName() );
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+            }
+        });
+        flagind.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                session.setCustomParams("LANGUAGE", "in");
+                finish();
+                Intent i = getBaseContext().getPackageManager()
+                        .getLaunchIntentForPackage( getBaseContext().getPackageName() );
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+//                Toast.makeText(MainActivity.this, "Mohon Restart Aplikasi", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         cartx = (TextView) findViewById(R.id.cartx);
         cartx.setOnClickListener(new View.OnClickListener() {
             @Override

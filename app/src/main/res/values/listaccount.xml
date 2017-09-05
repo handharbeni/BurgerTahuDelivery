@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="listaccount">
+        <item>@string/my_account</item>
+        <item>@string/address_book</item>
+    </string-array>
+</resources>

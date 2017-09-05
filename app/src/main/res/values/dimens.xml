@@ -8,4 +8,6 @@
     <dimen name="paddingitemmenu">15dp</dimen>
     <dimen name="paddingpanelinfo">5dp</dimen>
     <dimen name="paddingdefault">5dp</dimen>
+    <dimen name="paddingother">5dp</dimen>
+    <dimen name="fontsizeother">20dp</dimen>
 </resources>

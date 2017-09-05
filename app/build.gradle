@@ -29,6 +29,9 @@ android {
             signingConfig signingConfigs.config
         }
     }
+    dexOptions {
+        incremental true
+    }
 }
 
 dependencies {

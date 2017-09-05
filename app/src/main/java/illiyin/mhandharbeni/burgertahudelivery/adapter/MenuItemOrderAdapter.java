@@ -19,6 +19,7 @@ import illiyin.mhandharbeni.burgertahudelivery.R;
 import illiyin.mhandharbeni.databasemodule.ItemOrder;
 import illiyin.mhandharbeni.databasemodule.ModelCart;
 import illiyin.mhandharbeni.realmlibrary.Crud;
+import illiyin.mhandharbeni.utilslibrary.NumberFormat;
 
 /**
  * Created by root on 05/08/17.
@@ -32,6 +33,7 @@ public class MenuItemOrderAdapter extends RecyclerView.Adapter<MenuItemOrderAdap
     private ModelCart modelCart;
     private Crud crudMenu;
     private Crud crudCart;
+    private NumberFormat numberFormat;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView txtTitleMenu, txtHargaMenu, eQty;
@@ -61,7 +63,7 @@ public class MenuItemOrderAdapter extends RecyclerView.Adapter<MenuItemOrderAdap
     public void onBindViewHolder(final MenuItemOrderAdapter.MyViewHolder holder, int position) {
         final ItemOrder m = menuList.get(position);
         holder.txtTitleMenu.setText(m.getNama_menu());
-        holder.txtHargaMenu.setText(m.getHarga());
+        holder.txtHargaMenu.setText(numberFormat.format(Double.valueOf(m.getHarga())));
         holder.eQty.setText(m.getJumlah());
         Picasso.with(mContext).load(m.getGambar()).placeholder(R.mipmap.ic_launcher).into(holder.imageMenu);
 

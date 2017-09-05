@@ -22,6 +22,7 @@ import illiyin.mhandharbeni.burgertahudelivery.fragment.sub.DetailMenu;
 import illiyin.mhandharbeni.databasemodule.ModelCart;
 import illiyin.mhandharbeni.databasemodule.ModelMenu;
 import illiyin.mhandharbeni.realmlibrary.Crud;
+import illiyin.mhandharbeni.utilslibrary.NumberFormat;
 import io.realm.RealmResults;
 
 /**
@@ -36,6 +37,7 @@ public class MenuItemAdapter extends RecyclerView.Adapter<MenuItemAdapter.MyView
     private ModelCart modelCart;
     private Crud crudMenu;
     private Crud crudCart;
+    private NumberFormat numberFormat;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView image;
@@ -66,7 +68,7 @@ public class MenuItemAdapter extends RecyclerView.Adapter<MenuItemAdapter.MyView
         final ModelMenu m = menuList.get(position);
         Picasso.with(mContext).load(m.getGambar()).placeholder(R.mipmap.ic_launcher).into(holder.image);
         holder.title.setText(m.getNama());
-        holder.price.setText(m.getHarga());
+        holder.price.setText(numberFormat.format(Double.valueOf(m.getHarga())));
         holder.parentlayout.setTag(m.getId());
         holder.parentlayout.setOnClickListener(new View.OnClickListener() {
             @Override

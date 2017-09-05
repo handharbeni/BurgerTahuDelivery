@@ -10,13 +10,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:padding="10dp"
+            android:textSize="@dimen/fontsizeother"
+            android:padding="@dimen/paddingother"
+            android:layout_marginLeft="@dimen/paddingitemmenu"
             android:id="@+id/myaccount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="My Account"/>
         <TextView
-            android:padding="10dp"
+            android:textSize="@dimen/fontsizeother"
+            android:padding="@dimen/paddingother"
+            android:layout_marginLeft="@dimen/paddingitemmenu"
             android:layout_marginTop="25dp"
             android:id="@+id/addressbook"
             android:layout_width="match_parent"

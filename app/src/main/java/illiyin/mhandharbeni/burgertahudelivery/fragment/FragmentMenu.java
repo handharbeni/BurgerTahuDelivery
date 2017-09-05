@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -108,10 +109,12 @@ public class FragmentMenu extends Fragment {
         int decorPriorityIndex = 0;
         Drawable dividerDrawable = ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.divider_menu);
         RecyclerView.ItemDecoration dividerItemDecoration = new DividerItemDecoration(dividerDrawable);
-        LinearLayoutManager llm = new LinearLayoutManager(getActivity().getApplicationContext());
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        rvMenu.addItemDecoration(dividerItemDecoration, decorPriorityIndex);
-        rvMenu.setLayoutManager(llm);
+        GridLayoutManager glm = new GridLayoutManager(getActivity().getApplicationContext(), 2);
+//        LinearLayoutManager llm = new LinearLayoutManager(getActivity().getApplicationContext());
+//        llm.setOrientation(LinearLayoutManager.VERTICAL);
+//        rvMenu.addItemDecoration(dividerItemDecoration, decorPriorityIndex);
+        rvMenu.setHasFixedSize(true);
+        rvMenu.setLayoutManager(glm);
     }
 
     @Override
