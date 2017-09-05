@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="56dp">
+    <ImageView
+        android:layout_alignParentStart="true"
+        android:id="@+id/logo"
+        android:layout_margin="5dp"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo"
+        android:layout_alignParentLeft="true" />
+
+    <ImageView
+        android:padding="5dp"
+        android:id="@+id/flagen"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/logo"
+        android:layout_toLeftOf="@+id/flagind"
+        android:layout_toStartOf="@+id/flagind"
+        android:src="@drawable/flag_en" />
+
+    <ImageView
+        android:padding="5dp"
+        android:id="@+id/flagind"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/cartx"
+        android:layout_toStartOf="@+id/cartx"
+        android:src="@drawable/flag_ind" />
+    <TextView
+        android:textColor="@color/textBlack"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:id="@+id/cartx"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:text="@string/placeholder_opencart"
+        />
+</RelativeLayout>

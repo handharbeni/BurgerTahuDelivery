@@ -1,0 +1,21 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/colorAddres"
+    android:layout_height="wrap_content">
+    <TextView
+        android:textColor="@color/textWhite"
+        android:padding="@dimen/paddingpanelinfo"
+        android:textSize="@dimen/fontsizepanelinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/placeholder_deliveryaddres"/>
+    <TextView
+        android:textColor="@color/textWhite"
+        android:textStyle="bold"
+        android:padding="@dimen/paddingpanelinfo"
+        android:textSize="@dimen/fontsizepanelinfo"
+        android:id="@+id/address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="JL. Puri Cempaka Putih AS 20"/>
+</LinearLayout>

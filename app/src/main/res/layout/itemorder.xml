@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:id="@+id/rlItemOrder"
+        android:padding="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:showDividers="middle"
+            android:dividerPadding="3dp"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/imgOrder"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+            <TextView
+                android:id="@+id/idOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Order"/>
+            <TextView
+                android:id="@+id/tujuanOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alamat Tujuan"/>
+            <TextView
+                android:id="@+id/totalOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Belanja"/>
+            <TextView
+                android:id="@+id/statusOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status"/>
+            <TextView
+                android:id="@+id/tanggalOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tanggal"/>
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/imgOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_keyboard_arrow_right" />
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

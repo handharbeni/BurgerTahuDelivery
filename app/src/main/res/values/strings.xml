@@ -1,0 +1,85 @@
+<resources>
+    <string name="app_name">BT Delivery</string>
+    <string name="title_home">Home</string>
+    <string name="title_menu">Menu</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="title_track">Track Order</string>
+    <string name="title_other">Other</string>
+    <string name="placeholder_titlemenu">Your Title Will Be Here, Your Title Will Be Here, Your Title Will Be Here</string>
+    <string name="placeholder_pricemenu">Menu Price Will Be Here</string>
+    <string name="placeholder_qty">Jumlah</string>
+    <string name="placeholder_addtocart">Tambahkan Ke Keranjang</string>
+    <string name="placeholder_image">TODO</string>
+    <string name="placeholder_recomoutlet">Outlet Rekomendasi</string>
+    <string name="placeholder_estimatedtime">Perkiraan Waktu</string>
+    <string name="placeholder_deliveryaddres">Alamat Tujuan</string>
+    <string name="placeholder_searchorder">Cari Nomor Order</string>
+    <string name="placeholder_myorder">Order Saya</string>
+    <string name="placeholder_myaccount">Akun Saya</string>
+    <string name="placeholder_about">Tentang</string>
+    <string name="placeholder_rate">Rating Menu Kami</string>
+    <string name="placeholder_opencart">CART</string>
+    <string-array name="listabout">
+        <item>About</item>
+    </string-array>
+    <string-array name="listaccount">
+        <item>My Account</item>
+        <item>Address Book</item>
+    </string-array>
+    <string-array name="listorder">
+        <item>Order History</item>
+        <item>Offers</item>
+    </string-array>
+    <string-array name="listlogout">
+        <item>Logout</item>
+    </string-array>
+    <string name="addnotes">Tambah Catatan</string>
+    <string name="server">@string/module_server</string>
+    <string name="home">Home</string>
+    <string name="order">My Order</string>
+    <string name="akun">Account</string>
+    <string name="nama">Nama</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="signin">Signin</string>
+    <string name="signup">Signup</string>
+    <string name="askaccount">Belum punya akun? daftar disini</string>
+    <string name="asklogin">Sudah punya akun? login disini</string>
+    <string name="dummyToken">8aa560b5efa8691dddcf4a11a69b3d1f98f01280bb6ef6efbd32ca39d9b8ac33</string>
+    <string name="dummyPicture">http://s3.amazonaws.com/37assets/svn/765-default-avatar.png</string>
+    <string name="KeyPassword">SATULIMAKALI</string>
+    <string name="stateConnected">1</string>
+    <string name="stateDisconnected">0</string>
+    <string name="notifnoconnection">Tidak ada koneksi, coba lagi</string>
+    <string name="logingagal">Login Gagal, Username Password tidak valid</string>
+    <string name="daftargagal">Daftar Gagal, masih ada yang kosong \natau email sudah digunakan</string>
+    <string name="orderactive">Order Active</string>
+    <string name="ordercomplete">Order Complete</string>
+    <string name="food">Makanan</string>
+    <string name="drink">Minuman</string>
+    <string name="qty">Jumlah</string>
+    <string name="delete">Hapus</string>
+    <string name="accept">Order</string>
+    <string name="addmore">Tambah Item</string>
+    <string name="detailaddress">Detail Tujuan</string>
+    <string name="detailpayment">Detail Pembayaran</string>
+    <string name="changedestination">Ganti</string>
+    <string name="statusok">OK</string>
+    <string name="total">Total</string>
+    <string name="deliveryfee">Biaya Antar</string>
+    <string name="totalharga">Total Harga</string>
+    <string name="doneorder">Selesai</string>
+    <string name="trackorder">Lihat Pengiriman</string>
+    <string name="title_activity_maps">Map</string>
+
+    <string name="title_activity_location_picker">Location Picker</string>
+    <string name="load_location_error">Something went wrongszs. Please try again.</string>
+    <string name="no_search_results">There are no results for your searchas</string>
+    <string name="unknown_location">unknown location</string>
+    <string name="voice_search_promp">Search by voice…</string>
+    <string name="voice_search_extra_language">id-ID</string>
+    <string name="toolbar_action_voice_title">Voice</string>
+    <string name="search_hint">Search</string>
+    <string name="ordernum">Nomor Pemesanan</string>
+    <string name="txtSave">Simpan</string>
+</resources>
