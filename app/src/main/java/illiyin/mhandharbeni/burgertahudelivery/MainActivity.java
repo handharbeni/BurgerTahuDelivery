@@ -220,8 +220,11 @@ public class MainActivity extends AppCompatActivity implements SessionListener {
 
     @Override
     public void onBackPressed() {
-        changeSelectedMenu(0);
-//        super.onBackPressed();
-        return;
+        if (tabLayout.getSelectedTabPosition() != 0){
+            changeSelectedMenu(0);
+        }else{
+//            super.onBackPressed();
+            finish();
+        }
     }
 }
