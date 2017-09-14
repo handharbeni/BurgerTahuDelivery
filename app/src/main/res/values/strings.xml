@@ -3,7 +3,7 @@
     <string name="title_home">Beranda</string>
     <string name="title_menu">Menu</string>
     <string name="title_favorite">Favorit</string>
-    <string name="title_track">Lacak Pesanan</string>
+    <string name="title_track">Cek Pesanan</string>
     <string name="title_other">Lainnya</string>
     <string name="placeholder_titlemenu">Your Title Will Be Here, Your Title Will Be Here, Your Title Will Be Here</string>
     <string name="placeholder_pricemenu">Menu Price Will Be Here</string>
@@ -18,8 +18,9 @@
     <string name="placeholder_myaccount">Akun Saya</string>
     <string name="placeholder_about">Tentang</string>
     <string name="placeholder_rate">Rating Menu Kami</string>
-    <string name="placeholder_opencart">Keranjang</string>
+    <string name="placeholder_opencart">PESANAN</string>
     <string name="about">Tentang</string>
+    <string name="descabout">Kami memahami Anda sangat peduli dengan makanan yang Anda makan. Oleh karenanya kami selalu menghadirkan setiap menu makanan yang sehat, higienis, lezat dan halal. Menentukan aneka menu yang bervariasi dengan selalu mengedepankan kualitas serta menciptakan makanan sehat dan seimbang</string>
     <string name="my_account">Akun Saya</string>
     <string name="address_book">Daftar Alamat</string>
     <string name="order_history">Histori Pesanan</string>

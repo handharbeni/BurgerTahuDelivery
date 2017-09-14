@@ -10,9 +10,6 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -141,11 +138,5 @@ public class OrderHistory extends AppCompatActivity implements CartUtil {
 
     }
 
-    @Override
-    public void changeActivity(String value) {
-//        Intent i = new Intent(getApplicationContext(), DetailOrder.class);
-//        i.putExtra("id_order", Integer.valueOf(value));
-//        startActivity(i);
-    }
 }
 

@@ -26,5 +26,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Address Book"/>
+        <TextView
+            android:textSize="@dimen/fontsizeother"
+            android:padding="@dimen/paddingother"
+            android:layout_marginLeft="@dimen/paddingitemmenu"
+            android:layout_marginTop="25dp"
+            android:id="@+id/signintextview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login"/>
     </LinearLayout>
 </android.support.v7.widget.CardView>

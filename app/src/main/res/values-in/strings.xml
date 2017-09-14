@@ -9,7 +9,7 @@
     <string name="addmore">Tambah Item</string>
     <string name="addnotes">Tambah Catatan</string>
     <string name="placeholder_addtocart">Tambahkan Ke Keranjang</string>
-    <string name="placeholder_opencart">Keranjang</string>
+    <string name="placeholder_opencart">PESANAN</string>
     <string name="changedestination">Ganti</string>
     <string name="delete">Hapus</string>
     <string name="placeholder_deliveryaddres">Alamat Tujuan</string>
@@ -61,7 +61,7 @@
     <string name="placeholder_image">TODO</string>
     <string name="total">Total</string>
     <string name="totalharga">Total Harga</string>
-    <string name="title_track">Lacak Pesanan</string>
+    <string name="title_track">Cek Pesanan</string>
     <string name="trackorder">Lihat Pengiriman</string>
     <string name="unknown_location">Lokasi Tidak diketahui</string>
     <string name="toolbar_action_voice_title">Suara</string>
@@ -72,4 +72,5 @@
     <string name="order_history">Histori Pesanan</string>
     <string name="offers">Penawaran</string>
     <string name="logout">Keluar</string>
+    <string name="descabout">Kami memahami Anda sangat peduli dengan makanan yang Anda makan. Oleh karenanya kami selalu menghadirkan setiap menu makanan yang sehat, higienis, lezat dan halal. Menentukan aneka menu yang bervariasi dengan selalu mengedepankan kualitas serta menciptakan makanan sehat dan seimbang</string>
 </resources>

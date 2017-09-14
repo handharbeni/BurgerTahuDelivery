@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_rounded">
+    <LinearLayout
+        android:padding="20dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textSize="@dimen/fontsizeother"
+            android:padding="@dimen/paddingother"
+            android:layout_marginLeft="@dimen/paddingitemmenu"
+            android:id="@+id/myaccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="My Account"/>
+        <TextView
+            android:textSize="@dimen/fontsizeother"
+            android:padding="@dimen/paddingother"
+            android:layout_marginLeft="@dimen/paddingitemmenu"
+            android:layout_marginTop="25dp"
+            android:id="@+id/addressbook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Address Book"/>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

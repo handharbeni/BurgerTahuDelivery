@@ -5,10 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,18 +17,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.h6ah4i.android.tablayouthelper.TabLayoutHelper;
 
 import java.util.Locale;
 
-import illiyin.mhandharbeni.burgertahudelivery.fragment.FragmentFavorite;
-import illiyin.mhandharbeni.burgertahudelivery.fragment.FragmentHome;
-import illiyin.mhandharbeni.burgertahudelivery.fragment.FragmentMenu;
-import illiyin.mhandharbeni.burgertahudelivery.fragment.FragmentOther;
-import illiyin.mhandharbeni.burgertahudelivery.fragment.FragmentTrack;
+import illiyin.mhandharbeni.burgertahudelivery.adapter.TabsPagerAdapter;
 import illiyin.mhandharbeni.burgertahudelivery.fragment.sub.Cart;
 import illiyin.mhandharbeni.burgertahudelivery.fragment.sub.Login;
-import illiyin.mhandharbeni.burgertahudelivery.utils.BottomNavigationViewHelper;
 import illiyin.mhandharbeni.servicemodule.service.MainService;
 import illiyin.mhandharbeni.sessionlibrary.Session;
 import illiyin.mhandharbeni.sessionlibrary.SessionListener;
@@ -36,45 +33,11 @@ public class MainActivity extends AppCompatActivity implements SessionListener {
 
     Session session;
 
-    private TextView mTextMessage;
-    private Fragment fragment;
-    BottomNavigationView navigation;
     private TextView cartx;
     private ImageView flagen, flagind;
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    fragment = new FragmentHome();
-                    changeFragment(fragment);
-                    return true;
-                case R.id.navigation_menu:
-                    fragment = new FragmentMenu();
-                    changeFragment(fragment);
-                    return true;
-                case R.id.navigation_favorite:
-                    fragment = new FragmentFavorite();
-                    changeFragment(fragment);
-                    return true;
-                case R.id.navigation_track:
-                    fragment = new FragmentTrack();
-                    changeFragment(fragment);
-//                    checkSession();
-                    return true;
-                case R.id.navigation_other:
-                    fragment = new FragmentOther();
-                    changeFragment(fragment);
-//                    checkSession();
-                    return true;
-            }
-            return false;
-        }
-
-    };
+    private TabsPagerAdapter mAdapter;
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements SessionListener {
         getBaseContext().getResources().updateConfiguration(config,
                 getBaseContext().getResources().getDisplayMetrics());
         setContentView(R.layout.activity_main);
-        navigation = (BottomNavigationView) findViewById(R.id.navigation);
+
 
         flagen = (ImageView) findViewById(R.id.flagen);
         flagind = (ImageView) findViewById(R.id.flagind);
@@ -135,10 +98,37 @@ public class MainActivity extends AppCompatActivity implements SessionListener {
                 }
             }
         });
+        mAdapter = new TabsPagerAdapter(getSupportFragmentManager(), getApplicationContext());
+        viewPager = (ViewPager) findViewById(R.id.content);
+        tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        viewPager.setAdapter(mAdapter);
+//        mTabLayoutHelper = new TabLayoutHelper(tabLayout, viewPager);
+//        mTabLayoutHelper.setAutoAdjustTabModeEnabled(false);
+        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.getTabAt(0).setIcon(R.drawable.ic_home);
+        tabLayout.getTabAt(1).setIcon(R.drawable.ic_menu);
+        tabLayout.getTabAt(2).setIcon(R.drawable.ic_favorite);
+        tabLayout.getTabAt(3).setIcon(R.drawable.ic_track);
+        tabLayout.getTabAt(4).setIcon(R.drawable.ic_other_black);
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                int position = tab.getPosition();
+            }
 
-        BottomNavigationViewHelper.removeShiftMode(navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        changeSelectedMenu(0);
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                viewPager.setAdapter(mAdapter);
+                viewPager.setCurrentItem(tab.getPosition());
+
+            }
+        });
+
     }
 
     private void checkSession(){
@@ -200,9 +190,8 @@ public class MainActivity extends AppCompatActivity implements SessionListener {
                 id = R.id.navigation_other;
                 break;
         }
-
-        View view = navigation.findViewById(id);
-        view.performClick();
+        TabLayout.Tab newTab = tabLayout.getTabAt(position);
+        newTab.select();
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -227,5 +216,12 @@ public class MainActivity extends AppCompatActivity implements SessionListener {
         }
 
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        changeSelectedMenu(0);
+//        super.onBackPressed();
+        return;
     }
 }

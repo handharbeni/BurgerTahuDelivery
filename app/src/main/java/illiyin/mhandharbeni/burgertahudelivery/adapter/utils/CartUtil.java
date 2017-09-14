@@ -6,5 +6,4 @@ package illiyin.mhandharbeni.burgertahudelivery.adapter.utils;
 
 public interface CartUtil {
     void updateInfo();
-    void changeActivity(String value);
 }

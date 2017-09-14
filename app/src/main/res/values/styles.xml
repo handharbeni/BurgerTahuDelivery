@@ -9,9 +9,22 @@
         <item name="android:textColor">@color/textBlack</item>
     </style>
     <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <!--<item name="colorPrimary">@color/colorPrimary</item>-->
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowActionBarOverlay">true</item>
+    </style>
+    <style name="AppTheme.TabStyle" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">?attr/colorAccent</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabPaddingStart">12dp</item>
+        <item name="tabPaddingEnd">12dp</item>
+        <item name="tabTextAppearance">@style/AppTheme.TabItemStyle</item>
+        <item name="tabSelectedTextColor">@color/textBlack</item>
+    </style>
+    <style name="AppTheme.TabItemStyle" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">5sp</item>
+        <item name="android:textColor">@color/textBlack</item>
+        <item name="textAllCaps">true</item>
     </style>
 </resources>

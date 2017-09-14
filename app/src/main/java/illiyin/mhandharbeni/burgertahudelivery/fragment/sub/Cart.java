@@ -5,7 +5,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -34,12 +33,10 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
-import illiyin.mhandharbeni.burgertahudelivery.MainActivity;
 import illiyin.mhandharbeni.burgertahudelivery.R;
 import illiyin.mhandharbeni.burgertahudelivery.adapter.CartItemAdapter;
 import illiyin.mhandharbeni.burgertahudelivery.adapter.decoration.DividerItemDecoration;
 import illiyin.mhandharbeni.burgertahudelivery.adapter.utils.CartUtil;
-import illiyin.mhandharbeni.burgertahudelivery.fragment.FragmentMenu;
 import illiyin.mhandharbeni.burgertahudelivery.fragment.sub.model.ModelAddress;
 import illiyin.mhandharbeni.databasemodule.AdapterModel;
 import illiyin.mhandharbeni.databasemodule.ModelCart;
@@ -224,11 +221,6 @@ public class Cart extends AppCompatActivity implements CartUtil, SessionListener
 
         TextView totalSemua = (TextView) findViewById(R.id.totalSemua);
         totalSemua.setText(illiyin.mhandharbeni.utilslibrary.NumberFormat.format(Double.valueOf(String.valueOf(total_harga))));
-    }
-
-    @Override
-    public void changeActivity(String value) {
-
     }
 
 
