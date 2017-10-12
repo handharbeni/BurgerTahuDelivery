@@ -9,7 +9,7 @@
     <string name="addmore">Tambah Item</string>
     <string name="addnotes">Tambah Catatan</string>
     <string name="placeholder_addtocart">Tambahkan Ke Keranjang</string>
-    <string name="placeholder_opencart">PESANAN</string>
+    <string name="placeholder_opencart">PESAN</string>
     <string name="changedestination">Ganti</string>
     <string name="delete">Hapus</string>
     <string name="placeholder_deliveryaddres">Alamat Tujuan</string>

@@ -1,24 +1,34 @@
 package illiyin.mhandharbeni.burgertahudelivery;
 
+import android.Manifest;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.h6ah4i.android.tablayouthelper.TabLayoutHelper;
+import com.squareup.picasso.Picasso;
 
 import java.util.Locale;
 
@@ -28,6 +38,7 @@ import illiyin.mhandharbeni.burgertahudelivery.fragment.sub.Login;
 import illiyin.mhandharbeni.servicemodule.service.MainService;
 import illiyin.mhandharbeni.sessionlibrary.Session;
 import illiyin.mhandharbeni.sessionlibrary.SessionListener;
+import illiyin.mhandharbeni.utilslibrary.PermissionUtil;
 
 public class MainActivity extends AppCompatActivity implements SessionListener {
 
@@ -42,7 +53,26 @@ public class MainActivity extends AppCompatActivity implements SessionListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String[] permissions = new String[11];
+        permissions[0] = Manifest.permission.CAMERA;
+        permissions[1] = Manifest.permission.INTERNET;
+        permissions[2] = Manifest.permission.WAKE_LOCK;
+        permissions[3] = Manifest.permission.LOCATION_HARDWARE;
+        permissions[4] = Manifest.permission.ACCESS_COARSE_LOCATION;
+        permissions[5] = Manifest.permission.ACCESS_FINE_LOCATION;
+        permissions[6] = Manifest.permission.READ_PHONE_STATE;
+        permissions[7] = Manifest.permission.ACCESS_NETWORK_STATE;
+        permissions[8] = Manifest.permission.ACCESS_WIFI_STATE;
+        permissions[9] = Manifest.permission.WRITE_EXTERNAL_STORAGE;
+        permissions[10] = Manifest.permission.READ_EXTERNAL_STORAGE;
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            ActivityCompat.requestPermissions(
+                    this,
+                    permissions,
+                    5
+            );
+        }
         session = new Session(getApplicationContext(), this);
         runServices();
         String lang = session.getCustomParams("LANGUAGE", "en");
@@ -102,14 +132,84 @@ public class MainActivity extends AppCompatActivity implements SessionListener {
         viewPager = (ViewPager) findViewById(R.id.content);
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         viewPager.setAdapter(mAdapter);
-//        mTabLayoutHelper = new TabLayoutHelper(tabLayout, viewPager);
-//        mTabLayoutHelper.setAutoAdjustTabModeEnabled(false);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_home);
         tabLayout.getTabAt(1).setIcon(R.drawable.ic_menu);
         tabLayout.getTabAt(2).setIcon(R.drawable.ic_favorite);
         tabLayout.getTabAt(3).setIcon(R.drawable.ic_track);
         tabLayout.getTabAt(4).setIcon(R.drawable.ic_other_black);
+//        tabLayout.getTabAt(0).setIcon(R.drawable.newest_home);
+//        tabLayout.getTabAt(1).setIcon(R.drawable.newest_menu);
+//        tabLayout.getTabAt(2).setIcon(R.drawable.newest_fav);
+//        tabLayout.getTabAt(3).setIcon(R.drawable.newest_track);
+//        tabLayout.getTabAt(4).setIcon(R.drawable.newest_other);
+//
+//        TabLayout.Tab tabHome = tabLayout.getTabAt(0);tele
+//        View tabView = ((ViewGroup) tabLayout.getChildAt(0)).getChildAt(0);
+//        tabView.requestLayout();
+//        View view = LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
+//        ImageView iconHome = (ImageView) view.findViewById(R.id.icon);
+//        tabHome.setCustomView(view);
+//        tabHome.setText("");
+//        if (lang.equalsIgnoreCase("en")){
+//            Picasso.with(this).load(R.drawable.new_home).into(iconHome);
+//        }else{
+//            Picasso.with(this).load(R.drawable.new_home).into(iconHome);
+//        }
+//
+//        TabLayout.Tab tabMenu = tabLayout.getTabAt(1);
+//        View tabViewMenu = ((ViewGroup) tabLayout.getChildAt(0)).getChildAt(0);
+//        tabViewMenu.requestLayout();
+//        View viewMenu = LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
+//        ImageView iconMenu = (ImageView) viewMenu.findViewById(R.id.icon);
+//        tabMenu.setCustomView(viewMenu);
+//        tabMenu.setText("");
+//        if (lang.equalsIgnoreCase("en")){
+//            Picasso.with(this).load(R.drawable.new_menu).into(iconMenu);
+//        }else{
+//            Picasso.with(this).load(R.drawable.new_menu).into(iconMenu);
+//        }
+//
+//        TabLayout.Tab tabFavorite = tabLayout.getTabAt(2);
+//        View tabViewFavorite = ((ViewGroup) tabLayout.getChildAt(0)).getChildAt(0);
+//        tabViewFavorite.requestLayout();
+//        View viewFavorite = LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
+//        ImageView iconFavorite = (ImageView) viewFavorite.findViewById(R.id.icon);
+//        tabFavorite.setCustomView(viewFavorite);
+//        tabFavorite.setText("");
+//        if (lang.equalsIgnoreCase("en")){
+//            Picasso.with(this).load(R.drawable.new_fav_eng).into(iconFavorite);
+//        }else{
+//            Picasso.with(this).load(R.drawable.new_fav_indo).into(iconFavorite);
+//        }
+//
+//        TabLayout.Tab tabTrack = tabLayout.getTabAt(3);
+//        View tabViewTrack = ((ViewGroup) tabLayout.getChildAt(0)).getChildAt(0);
+//        tabViewTrack.requestLayout();
+//        View viewTrack = LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
+//        ImageView iconTrack = (ImageView) viewTrack.findViewById(R.id.icon);
+//        tabTrack.setCustomView(viewTrack);
+//        tabTrack.setText("");
+//        if (lang.equalsIgnoreCase("en")){
+//            Picasso.with(this).load(R.drawable.new_cek_indo).into(iconTrack);
+//        }else{
+//            Picasso.with(this).load(R.drawable.new_cek_indo).into(iconTrack);
+//        }
+//
+//        TabLayout.Tab tabOther = tabLayout.getTabAt(4);
+//        View tabViewOther = ((ViewGroup) tabLayout.getChildAt(0)).getChildAt(0);
+//        tabViewOther.requestLayout();
+//        View viewOther = LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
+//        ImageView iconOther = (ImageView) viewOther.findViewById(R.id.icon);
+//        tabOther.setCustomView(viewOther);
+//        tabOther.setText("");
+//        if (lang.equalsIgnoreCase("en")){
+//            Picasso.with(this).load(R.drawable.new_lain_eng).into(iconOther);
+//        }else{
+//            Picasso.with(this).load(R.drawable.new_lain_indo).into(iconOther);
+//        }
+
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -123,14 +223,11 @@ public class MainActivity extends AppCompatActivity implements SessionListener {
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-                viewPager.setAdapter(mAdapter);
-                viewPager.setCurrentItem(tab.getPosition());
 
             }
         });
 
     }
-
     private void checkSession(){
         if (!session.checkSession()){
             Intent i = new Intent(this, Login.class);

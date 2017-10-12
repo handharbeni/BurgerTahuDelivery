@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">utilslibrary</string>
+    <string name="twcen_bold">twcen_bold</string>
+    <string name="twcen_italic">twcen_italic</string>
+    <string name="twcen_regular">twcen_regular</string>
+    <string name="twcen_bold_italic">twcen_bold_italic</string>
+    <string name="twcen_condensed">twcen_condensed</string>
+    <string name="twcen_condensed_bold">twcen_condensed_bold</string>
+    <string name="twcen_condensed_extra_bold">twcen_condensed_extra_bold</string>
 </resources>

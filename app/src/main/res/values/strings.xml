@@ -18,7 +18,7 @@
     <string name="placeholder_myaccount">Akun Saya</string>
     <string name="placeholder_about">Tentang</string>
     <string name="placeholder_rate">Rating Menu Kami</string>
-    <string name="placeholder_opencart">PESANAN</string>
+    <string name="placeholder_opencart">PESAN</string>
     <string name="about">Tentang</string>
     <string name="descabout">Kami memahami Anda sangat peduli dengan makanan yang Anda makan. Oleh karenanya kami selalu menghadirkan setiap menu makanan yang sehat, higienis, lezat dan halal. Menentukan aneka menu yang bervariasi dengan selalu mengedepankan kualitas serta menciptakan makanan sehat dan seimbang</string>
     <string name="my_account">Akun Saya</string>
@@ -75,4 +75,12 @@
     <string name="search_hint">Cari</string>
     <string name="ordernum">Nomor Pemesanan</string>
     <string name="txtSave">Simpan</string>
+
+    <string name="twcen_bold" translatable="false">twcen_bold</string>
+    <string name="twcen_italic" translatable="false">twcen_italic</string>
+    <string name="twcen_regular" translatable="false">twcen_regular</string>
+    <string name="twcen_bold_italic" translatable="false">twcen_bold_italic</string>
+    <string name="twcen_condensed" translatable="false">twcen_condensed</string>
+    <string name="twcen_condensed_bold" translatable="false">twcen_condensed_bold</string>
+    <string name="twcen_condensed_extra_bold" translatable="false">twcen_condensed_extra_bold</string>
 </resources>

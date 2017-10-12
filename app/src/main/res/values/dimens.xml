@@ -3,12 +3,12 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fontsizetitlemenu">24sp</dimen>
-    <dimen name="fontsizepanelinfo">16sp</dimen>
+    <dimen name="fontsizepanelinfo">20sp</dimen>
     <dimen name="fontsizepricemenu">14sp</dimen>
-    <dimen name="paddingitemmenu">15dp</dimen>
+    <dimen name="paddingitemmenu">7dp</dimen>
     <dimen name="paddingpanelinfo">5dp</dimen>
     <dimen name="paddingdefault">5dp</dimen>
-    <dimen name="paddingother">5dp</dimen>
-    <dimen name="fontsizeother">20dp</dimen>
+    <dimen name="paddingother">0dp</dimen>
+    <dimen name="fontsizeother">30dp</dimen>
     <dimen name="design_navigation_icon_size" tools:override="true">100dp</dimen>
 </resources>

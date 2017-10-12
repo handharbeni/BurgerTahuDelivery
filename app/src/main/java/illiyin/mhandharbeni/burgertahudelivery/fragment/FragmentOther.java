@@ -1,6 +1,8 @@
 package illiyin.mhandharbeni.burgertahudelivery.fragment;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -25,6 +27,7 @@ import mehdi.sakout.aboutpage.AboutPage;
 public class FragmentOther extends Fragment implements SessionListener {
     View v;
     private TextView about, myaccount, addressbook, logout, orderhistory, offers, signintextview;
+    private TextView headerorder, headeraccount, headerabout;
     private Session session;
 
     @Override
@@ -33,6 +36,18 @@ public class FragmentOther extends Fragment implements SessionListener {
         session = new Session(getActivity().getApplicationContext(), this);
 
         if (session.checkSession()){
+            setFont(orderhistory, R.id.orderhistory, "twcen_condensed_extra_bold.ttf", v);
+            setFont(about, R.id.about, "twcen_condensed_extra_bold.ttf", v);
+            setFont(myaccount, R.id.myaccount, "twcen_condensed_extra_bold.ttf", v);
+            setFont(addressbook, R.id.addressbook, "twcen_condensed_extra_bold.ttf", v);
+            setFont(logout, R.id.logout, "twcen_condensed_extra_bold.ttf", v);
+            setFont(offers, R.id.offers, "twcen_condensed_extra_bold.ttf", v);
+            setFont(signintextview, R.id.signintextview, "twcen_condensed_extra_bold.ttf", v);
+
+            setFont(headerorder, R.id.headerorder, "twcen_condensed.ttf", v);
+            setFont(headeraccount, R.id.headeraccount, "twcen_condensed.ttf", v);
+            setFont(headerabout, R.id.headerabout, "twcen_condensed.ttf", v);
+
             castElementTextView(myaccount, R.id.myaccount, v).setVisibility(View.VISIBLE);
             castElementTextView(addressbook, R.id.addressbook, v).setVisibility(View.VISIBLE);
             castElementTextView(logout, R.id.logout, v).setVisibility(View.VISIBLE);
@@ -66,6 +81,18 @@ public class FragmentOther extends Fragment implements SessionListener {
             });
 
         }else{
+            setFont(orderhistory, R.id.orderhistory, "twcen_condensed_extra_bold.ttf", v);
+            setFont(about, R.id.about, "twcen_condensed_extra_bold.ttf", v);
+            setFont(myaccount, R.id.myaccount, "twcen_condensed_extra_bold.ttf", v);
+            setFont(addressbook, R.id.addressbook, "twcen_condensed_extra_bold.ttf", v);
+            setFont(logout, R.id.logout, "twcen_condensed_extra_bold.ttf", v);
+            setFont(offers, R.id.offers, "twcen_condensed_extra_bold.ttf", v);
+            setFont(signintextview, R.id.signintextview, "twcen_condensed_extra_bold.ttf", v);
+
+            setFont(headerorder, R.id.headerorder, "twcen_condensed.ttf", v);
+            setFont(headeraccount, R.id.headeraccount, "twcen_condensed.ttf", v);
+            setFont(headerabout, R.id.headerabout, "twcen_condensed.ttf", v);
+
             castElementTextView(myaccount, R.id.myaccount, v).setVisibility(View.GONE);
             castElementTextView(addressbook, R.id.addressbook, v).setVisibility(View.GONE);
             castElementTextView(logout, R.id.logout, v).setVisibility(View.GONE);
@@ -97,6 +124,10 @@ public class FragmentOther extends Fragment implements SessionListener {
         });
 
         return v;
+    }
+    private void setFont(TextView name, int id, String font, View parent){
+        name = (TextView) parent.findViewById(id);
+        name.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), font));
     }
     private View castElementTextView(View name, int id, View parent){
         return name = (TextView) parent.findViewById(id);

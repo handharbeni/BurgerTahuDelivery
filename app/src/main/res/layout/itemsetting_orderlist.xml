@@ -5,26 +5,33 @@
     android:layout_height="wrap_content"
     android:background="@drawable/background_rounded">
     <LinearLayout
-        android:padding="@dimen/paddingother"
+        android:paddingRight="@dimen/paddingother"
+        android:paddingTop="@dimen/paddingother"
+        android:paddingBottom="@dimen/paddingother"
+        android:paddingLeft="20dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <TextView
-            android:textSize="@dimen/fontsizeother"
-            android:padding="@dimen/paddingother"
-            android:layout_marginLeft="@dimen/paddingitemmenu"
             android:id="@+id/orderhistory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Order History"/>
-        <TextView
-            android:textSize="@dimen/fontsizeother"
-            android:padding="@dimen/paddingother"
             android:layout_marginLeft="@dimen/paddingitemmenu"
-            android:layout_marginTop="25dp"
+            android:padding="@dimen/paddingother"
+            android:text="Order History"
+            android:textSize="@dimen/fontsizeother"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/offers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Offers"/>
+            android:layout_marginLeft="@dimen/paddingitemmenu"
+            android:layout_marginTop="10dp"
+            android:padding="@dimen/paddingother"
+            android:text="Offers"
+            android:textSize="@dimen/fontsizeother"
+            android:textStyle="bold" />
     </LinearLayout>
 </android.support.v7.widget.CardView>

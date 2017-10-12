@@ -5,11 +5,15 @@
     android:layout_height="wrap_content"
     android:background="@drawable/background_rounded">
     <LinearLayout
-        android:padding="20dp"
+        android:paddingRight="@dimen/paddingother"
+        android:paddingTop="@dimen/paddingother"
+        android:paddingBottom="@dimen/paddingother"
+        android:paddingLeft="20dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
+            android:textStyle="bold"
             android:textSize="@dimen/fontsizeother"
             android:padding="@dimen/paddingother"
             android:layout_marginLeft="@dimen/paddingitemmenu"
@@ -18,19 +22,21 @@
             android:layout_height="wrap_content"
             android:text="My Account"/>
         <TextView
+            android:textStyle="bold"
             android:textSize="@dimen/fontsizeother"
             android:padding="@dimen/paddingother"
             android:layout_marginLeft="@dimen/paddingitemmenu"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="10dp"
             android:id="@+id/addressbook"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Address Book"/>
         <TextView
+            android:textStyle="bold"
             android:textSize="@dimen/fontsizeother"
             android:padding="@dimen/paddingother"
             android:layout_marginLeft="@dimen/paddingitemmenu"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="10dp"
             android:id="@+id/signintextview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

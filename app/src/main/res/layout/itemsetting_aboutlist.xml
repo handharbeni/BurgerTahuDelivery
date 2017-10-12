@@ -5,11 +5,15 @@
     android:layout_height="wrap_content"
     android:background="@drawable/background_rounded">
     <LinearLayout
-        android:padding="20dp"
+        android:paddingRight="@dimen/paddingother"
+        android:paddingTop="@dimen/paddingother"
+        android:paddingBottom="@dimen/paddingother"
+        android:paddingLeft="20dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
+            android:textStyle="bold"
             android:textSize="@dimen/fontsizeother"
             android:padding="@dimen/paddingother"
             android:layout_marginLeft="@dimen/paddingitemmenu"

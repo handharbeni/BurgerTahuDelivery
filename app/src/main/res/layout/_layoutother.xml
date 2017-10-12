@@ -9,8 +9,14 @@
         android:layout_height="match_parent"
         android:background="@android:color/white">
         <include layout="@layout/itemsetting_order"/>
-        <include layout="@layout/itemsetting_account"/>
-        <include layout="@layout/itemsetting_about"/>
-        <include layout="@layout/itemsetting_logout"/>
+        <include layout="@layout/itemsetting_account" android:layout_marginTop="@dimen/paddingother"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <include layout="@layout/itemsetting_about" android:layout_marginTop="@dimen/paddingother"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <include layout="@layout/itemsetting_logout" android:layout_marginTop="@dimen/paddingother"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </ScrollView>
