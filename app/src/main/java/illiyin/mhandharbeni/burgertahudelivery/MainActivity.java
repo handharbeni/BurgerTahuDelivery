@@ -133,81 +133,48 @@ public class MainActivity extends AppCompatActivity implements SessionListener {
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         viewPager.setAdapter(mAdapter);
         tabLayout.setupWithViewPager(viewPager);
-        tabLayout.getTabAt(0).setIcon(R.drawable.ic_home);
-        tabLayout.getTabAt(1).setIcon(R.drawable.ic_menu);
-        tabLayout.getTabAt(2).setIcon(R.drawable.ic_favorite);
-        tabLayout.getTabAt(3).setIcon(R.drawable.ic_track);
-        tabLayout.getTabAt(4).setIcon(R.drawable.ic_other_black);
-//        tabLayout.getTabAt(0).setIcon(R.drawable.newest_home);
-//        tabLayout.getTabAt(1).setIcon(R.drawable.newest_menu);
-//        tabLayout.getTabAt(2).setIcon(R.drawable.newest_fav);
-//        tabLayout.getTabAt(3).setIcon(R.drawable.newest_track);
-//        tabLayout.getTabAt(4).setIcon(R.drawable.newest_other);
-//
-//        TabLayout.Tab tabHome = tabLayout.getTabAt(0);tele
-//        View tabView = ((ViewGroup) tabLayout.getChildAt(0)).getChildAt(0);
-//        tabView.requestLayout();
-//        View view = LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
-//        ImageView iconHome = (ImageView) view.findViewById(R.id.icon);
-//        tabHome.setCustomView(view);
-//        tabHome.setText("");
-//        if (lang.equalsIgnoreCase("en")){
-//            Picasso.with(this).load(R.drawable.new_home).into(iconHome);
-//        }else{
-//            Picasso.with(this).load(R.drawable.new_home).into(iconHome);
-//        }
-//
-//        TabLayout.Tab tabMenu = tabLayout.getTabAt(1);
-//        View tabViewMenu = ((ViewGroup) tabLayout.getChildAt(0)).getChildAt(0);
-//        tabViewMenu.requestLayout();
-//        View viewMenu = LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
-//        ImageView iconMenu = (ImageView) viewMenu.findViewById(R.id.icon);
-//        tabMenu.setCustomView(viewMenu);
-//        tabMenu.setText("");
-//        if (lang.equalsIgnoreCase("en")){
-//            Picasso.with(this).load(R.drawable.new_menu).into(iconMenu);
-//        }else{
-//            Picasso.with(this).load(R.drawable.new_menu).into(iconMenu);
-//        }
-//
-//        TabLayout.Tab tabFavorite = tabLayout.getTabAt(2);
-//        View tabViewFavorite = ((ViewGroup) tabLayout.getChildAt(0)).getChildAt(0);
-//        tabViewFavorite.requestLayout();
-//        View viewFavorite = LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
-//        ImageView iconFavorite = (ImageView) viewFavorite.findViewById(R.id.icon);
-//        tabFavorite.setCustomView(viewFavorite);
-//        tabFavorite.setText("");
-//        if (lang.equalsIgnoreCase("en")){
-//            Picasso.with(this).load(R.drawable.new_fav_eng).into(iconFavorite);
-//        }else{
-//            Picasso.with(this).load(R.drawable.new_fav_indo).into(iconFavorite);
-//        }
-//
-//        TabLayout.Tab tabTrack = tabLayout.getTabAt(3);
-//        View tabViewTrack = ((ViewGroup) tabLayout.getChildAt(0)).getChildAt(0);
-//        tabViewTrack.requestLayout();
-//        View viewTrack = LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
-//        ImageView iconTrack = (ImageView) viewTrack.findViewById(R.id.icon);
-//        tabTrack.setCustomView(viewTrack);
-//        tabTrack.setText("");
-//        if (lang.equalsIgnoreCase("en")){
-//            Picasso.with(this).load(R.drawable.new_cek_indo).into(iconTrack);
-//        }else{
-//            Picasso.with(this).load(R.drawable.new_cek_indo).into(iconTrack);
-//        }
-//
-//        TabLayout.Tab tabOther = tabLayout.getTabAt(4);
-//        View tabViewOther = ((ViewGroup) tabLayout.getChildAt(0)).getChildAt(0);
-//        tabViewOther.requestLayout();
-//        View viewOther = LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
-//        ImageView iconOther = (ImageView) viewOther.findViewById(R.id.icon);
-//        tabOther.setCustomView(viewOther);
-//        tabOther.setText("");
-//        if (lang.equalsIgnoreCase("en")){
-//            Picasso.with(this).load(R.drawable.new_lain_eng).into(iconOther);
-//        }else{
-//            Picasso.with(this).load(R.drawable.new_lain_indo).into(iconOther);
-//        }
+//        tabLayout.getTabAt(0).setIcon(R.drawable.ic_home);
+//        tabLayout.getTabAt(1).setIcon(R.drawable.ic_menu);
+//        tabLayout.getTabAt(2).setIcon(R.drawable.ic_favorite);
+//        tabLayout.getTabAt(3).setIcon(R.drawable.ic_track);
+//        tabLayout.getTabAt(4).setIcon(R.drawable.ic_other_black);
+//        tabLayout.getTabAt(0).setIcon(R.drawable.used_home);
+//        tabLayout.getTabAt(1).setIcon(R.drawable.used_menu);
+//        tabLayout.getTabAt(2).setIcon(R.drawable.used_favorit);
+//        tabLayout.getTabAt(3).setIcon(R.drawable.used_track);
+//        tabLayout.getTabAt(4).setIcon(R.drawable.used_other);
+
+        View viewHome = getLayoutInflater().inflate(R.layout.custom_tab, null);
+        viewHome = getLayoutInflater().inflate(R.layout.custom_tab, null);
+        tabLayout.getTabAt(0).setCustomView(viewHome);
+
+        View viewMenu = getLayoutInflater().inflate(R.layout.custom_tab, null);
+        viewMenu = getLayoutInflater().inflate(R.layout.custom_tab_menu, null);
+        tabLayout.getTabAt(1).setCustomView(viewMenu);
+
+        View viewFavorit = getLayoutInflater().inflate(R.layout.custom_tab, null);
+        if (languageToLoad.equalsIgnoreCase("en")){
+            viewFavorit = getLayoutInflater().inflate(R.layout.custom_tab_favorite, null);
+        }else{
+            viewFavorit = getLayoutInflater().inflate(R.layout.custom_tab_favorit, null);
+        }
+        tabLayout.getTabAt(2).setCustomView(viewFavorit);
+
+        View viewTrack = getLayoutInflater().inflate(R.layout.custom_tab, null);
+        if (languageToLoad.equalsIgnoreCase("en")){
+            viewTrack = getLayoutInflater().inflate(R.layout.custom_tab_track, null);
+        }else{
+            viewTrack = getLayoutInflater().inflate(R.layout.custom_tab_lacak, null);
+        }
+        tabLayout.getTabAt(3).setCustomView(viewTrack);
+
+        View viewOther = getLayoutInflater().inflate(R.layout.custom_tab, null);
+        if (languageToLoad.equalsIgnoreCase("en")){
+            viewOther = getLayoutInflater().inflate(R.layout.custom_tab_other, null);
+        }else{
+            viewOther = getLayoutInflater().inflate(R.layout.custom_tab_lainnya, null);
+        }
+        tabLayout.getTabAt(4).setCustomView(viewOther);
 
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

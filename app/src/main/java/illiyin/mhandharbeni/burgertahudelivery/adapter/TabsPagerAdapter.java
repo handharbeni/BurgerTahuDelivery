@@ -50,27 +50,27 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
     }
     @Override
     public CharSequence getPageTitle(int position) {
-        String title = null;
-        if (position == 0)
-        {
-            title = "";
-        }
-        else if (position == 1)
-        {
-            title = mContext.getString(R.string.title_menu);
-        }
-        else if (position == 2)
-        {
-            title = mContext.getString(R.string.title_favorite);
-        }
-        else if (position == 3)
-        {
-            title = mContext.getString(R.string.title_track);
-        }
-        else if (position == 4)
-        {
-            title = mContext.getString(R.string.title_other);
-        }
+        String title = "";
+//        if (position == 0)
+//        {
+//            title = "";
+//        }
+//        else if (position == 1)
+//        {
+//            title = mContext.getString(R.string.title_menu);
+//        }
+//        else if (position == 2)
+//        {
+//            title = mContext.getString(R.string.title_favorite);
+//        }
+//        else if (position == 3)
+//        {
+//            title = mContext.getString(R.string.title_track);
+//        }
+//        else if (position == 4)
+//        {
+//            title = mContext.getString(R.string.title_other);
+//        }
         return title;
     }
 }
