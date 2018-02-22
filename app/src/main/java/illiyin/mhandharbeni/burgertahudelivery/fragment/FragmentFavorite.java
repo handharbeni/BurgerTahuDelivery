@@ -1,9 +1,11 @@
 package illiyin.mhandharbeni.burgertahudelivery.fragment;
 
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -43,8 +45,8 @@ public class FragmentFavorite  extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActivity().registerReceiver(this.receiver, new IntentFilter("SERVICE MENU"));
-
+//        getActivity().registerReceiver(this.receiver, new IntentFilter("SERVICE MENU"));
+        enableReceiver();
     }
 
     @Override
@@ -96,6 +98,7 @@ public class FragmentFavorite  extends Fragment {
                 ));
             }
         }
+        menuItemAdapter.swap(listMenu);
 //        menuItemAdapter.notifyDataSetChanged();
     }
     public void listData(){
@@ -116,40 +119,48 @@ public class FragmentFavorite  extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        getActivity().registerReceiver(this.receiver, new IntentFilter("SERVICE MENU"));
-        LocalBroadcastManager.getInstance(getActivity()).registerReceiver((receiver),
-                new IntentFilter(MenuService.ACTION_LOCATION_BROADCAST)
-        );
+        enableReceiver();
+//        getActivity().registerReceiver(this.receiver, new IntentFilter("SERVICE MENU"));
+//        LocalBroadcastManager.getInstance(getActivity()).registerReceiver((receiver),
+//                new IntentFilter(MenuService.ACTION_LOCATION_BROADCAST)
+//        );
     }
 
     @Override
     public void onPause() {
+//        getActivity().unregisterReceiver(this.receiver);
+//        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(receiver);
+        disableReceiver();
         crud.closeRealm();
-        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(receiver);
         super.onPause();
     }
 
     @Override
     public void onStop() {
-        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(receiver);
+//        getActivity().unregisterReceiver(this.receiver);
+//        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(receiver);
+        disableReceiver();
+        crud.closeRealm();
         super.onStop();
     }
 
     @Override
     public void onDestroy() {
+//        getActivity().unregisterReceiver(this.receiver);
+//        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(receiver);
+        disableReceiver();
         crud.closeRealm();
-        getActivity().unregisterReceiver(this.receiver);
         super.onDestroy();
     }
-    BroadcastReceiver receiver = new BroadcastReceiver() {
+    public static class Receivers extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
             Bundle bundle = intent.getExtras();
             String mode = bundle.getString("MODE");
             switch (mode){
                 case "UPDATE MENU":
-                    initDataAdapter();
-                    menuItemAdapter.swap(listMenu);
+                    FragmentFavorite fragmentFavorite = new FragmentFavorite();
+                    fragmentFavorite.initDataAdapter();
                     break;
                 case "UPDATE LIST":
 
@@ -162,4 +173,13 @@ public class FragmentFavorite  extends Fragment {
 
         }
     };
+    private void enableReceiver(){
+        ComponentName component = new ComponentName(this.getActivity().getApplicationContext(), Receivers.class);
+        this.getActivity().getPackageManager().setComponentEnabledSetting(component, PackageManager. COMPONENT_ENABLED_STATE_ENABLED , PackageManager.DONT_KILL_APP);
+    }
+    private void disableReceiver(){
+        ComponentName component = new ComponentName(this.getActivity().getApplicationContext(), Receivers.class);
+        this.getActivity().getPackageManager().setComponentEnabledSetting(component, PackageManager. COMPONENT_ENABLED_STATE_DISABLED , PackageManager.DONT_KILL_APP);
+    }
+
 }

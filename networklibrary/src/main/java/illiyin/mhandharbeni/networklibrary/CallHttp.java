@@ -20,7 +20,7 @@ public class CallHttp {
     }
     public String get(String url){
         try {
-            return androidCall.get(url);
+            return androidCall.get(url).trim();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -28,7 +28,7 @@ public class CallHttp {
     }
     public String post(String url, RequestBody requestBody){
         try {
-            return androidCall.post(url, requestBody);
+            return androidCall.post(url, requestBody).trim();
         } catch (IOException e) {
             e.printStackTrace();
         }

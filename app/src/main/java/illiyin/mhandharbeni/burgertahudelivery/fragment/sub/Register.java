@@ -42,7 +42,7 @@ public class Register extends AppCompatActivity {
         input_nama = (EditText) findViewById(R.id.input_name);
         input_email = (EditText) findViewById(R.id.input_email);
         input_nohp = (EditText) findViewById(R.id.input_nohp);
-        input_password = (EditText) findViewById(R.id.input_nohp);
+        input_password = (EditText) findViewById(R.id.input_password);
 
         link_login = (TextView) findViewById(R.id.link_login);
         link_login.setOnClickListener(new View.OnClickListener() {

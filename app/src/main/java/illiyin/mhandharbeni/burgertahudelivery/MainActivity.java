@@ -5,30 +5,20 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
-import com.h6ah4i.android.tablayouthelper.TabLayoutHelper;
-import com.squareup.picasso.Picasso;
 
 import java.util.Locale;
 
@@ -38,7 +28,6 @@ import illiyin.mhandharbeni.burgertahudelivery.fragment.sub.Login;
 import illiyin.mhandharbeni.servicemodule.service.MainService;
 import illiyin.mhandharbeni.sessionlibrary.Session;
 import illiyin.mhandharbeni.sessionlibrary.SessionListener;
-import illiyin.mhandharbeni.utilslibrary.PermissionUtil;
 
 public class MainActivity extends AppCompatActivity implements SessionListener {
 

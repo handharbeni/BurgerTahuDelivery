@@ -9,12 +9,12 @@ android {
             storePassword 'nollimakali'
         }
     }
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 27
+    buildToolsVersion "27.0.2"
     defaultConfig {
         applicationId "illiyin.mhandharbeni.burgertahudelivery"
         minSdkVersion 16
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -32,39 +32,47 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile project(path: ':realmlibrary')
-    compile project(path: ':networklibrary')
-    compile project(path: ':sessionlibrary')
-    compile project(path: ':utilslibrary')
-    compile project(path: ':databasemodule')
-    compile project(path: ':servicemodule')
-    compile project(path: ':drawroutemap')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:design:25.3.1'
-    compile 'com.android.support:support-vector-drawable:25.3.1'
-    compile 'com.hrules:horizontalnumberpicker:1.1.1'
-    compile('cn.trinea.android.view.autoscrollviewpager:android-auto-scroll-view-pager:1.1.2') {
+    api project(path: ':realmlibrary')
+    api project(path: ':networklibrary')
+    api project(path: ':sessionlibrary')
+    api project(path: ':utilslibrary')
+    api project(path: ':databasemodule')
+    api project(path: ':servicemodule')
+    api project(path: ':drawroutemap')
+
+    implementation 'com.android.support:appcompat-v7:27.0.2'
+    implementation 'com.android.support:design:27.0.2'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support:support-vector-drawable:27.0.2'
+    implementation 'com.hrules:horizontalnumberpicker:1.1.1'
+    implementation('cn.trinea.android.view.autoscrollviewpager:android-auto-scroll-view-pager:1.1.2') {
         exclude module: 'support-v4'
     }
-    compile 'com.squareup.picasso:picasso:2.3.2'
-    compile 'com.nineoldandroids:library:2.4.0'
-    compile 'com.daimajia.slider:library:1.1.5@aar'
-    compile 'com.github.florent37:fiftyshadesof:1.0.0'
-    compile 'com.github.dmytrodanylyk:android-morphing-button:98a4986e56'
-    compile 'com.google.android.gms:play-services-maps:11.0.4'
-    compile 'com.google.android.gms:play-services-location:11.0.4'
-    compile 'com.google.android.gms:play-services-places:11.0.4'
-    compile 'com.android.support:cardview-v7:25.3.1'
-    compile 'com.android.support:recyclerview-v7:25.3.1'
-    compile 'us.belka:androidtoggleswitch:1.2.2'
-    compile 'com.h6ah4i.android.tablayouthelper:tablayouthelper:0.8.0'
-    compile 'com.github.medyo:android-about-page:1.2.1'
-    compile 'de.hdodenhof:circleimageview:2.1.0'
-//    compile 'com.github.castorflex.smoothprogressbar:library:1.1.0'
-//    compile 'com.github.castorflex.smoothprogressbar:library-circular:1.3.0'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.nineoldandroids:library:2.4.0'
+    implementation 'com.daimajia.slider:library:1.1.5@aar'
+    implementation 'com.github.florent37:fiftyshadesof:1.0.0'
+    implementation 'com.github.dmytrodanylyk:android-morphing-button:98a4986e56'
+    implementation 'com.google.android.gms:play-services-maps:11.6.2'
+    implementation 'com.google.android.gms:play-services-location:11.6.2'
+    implementation 'com.google.android.gms:play-services-places:11.6.2'
+    implementation 'com.android.support:cardview-v7:27.0.2'
+    implementation 'com.android.support:recyclerview-v7:27.0.2'
+    implementation 'us.belka:androidtoggleswitch:1.2.2'
+    implementation 'com.h6ah4i.android.tablayouthelper:tablayouthelper:0.8.0'
+    implementation 'com.github.medyo:android-about-page:1.2.1'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    api 'com.squareup.okhttp3:okhttp:3.9.0'
+}
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion '25.3.0'
+            }
+        }
+    }
 }

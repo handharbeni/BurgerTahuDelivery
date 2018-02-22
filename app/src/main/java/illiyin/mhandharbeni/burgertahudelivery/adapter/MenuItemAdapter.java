@@ -79,43 +79,6 @@ public class MenuItemAdapter extends RecyclerView.Adapter<MenuItemAdapter.MyView
                 mContext.startActivity(i);
             }
         });
-//        holder.btnAddMenu.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Boolean duplicate = crudCart.checkDuplicate("id", m.getId());
-//                if (!duplicate){
-//                    /*insert new*/
-//                    ModelCart newCart = new ModelCart();
-//                    newCart.setId(m.getId());
-//                    newCart.setNama(m.getNama());
-//                    newCart.setGambar(m.getGambar());
-//                    newCart.setHarga(m.getHarga());
-//                    newCart.setKategori(m.getKategori());
-//                    newCart.setJumlah(1);
-//                    newCart.setSha(m.getSha());
-//                    crudCart.create(newCart);
-//                }else{
-//                    /*update qty + harga total*/
-//                    /*get last qty*/
-//                    int lastQty = 1;
-//                    RealmResults results = crudCart.read("id", m.getId());
-//                    ModelCart lastModelCart = (ModelCart) results.get(0);
-//                    lastQty += lastModelCart.getJumlah();
-//                    /*update to table*/
-//                    crudCart.openObject();
-//                    ModelCart updateObject = (ModelCart) crudCart.getRealmObject("id", m.getId());
-//                    updateObject.setSha(m.getSha());
-//                    updateObject.setKategori(m.getKategori());
-//                    updateObject.setHarga(m.getHarga());
-//                    updateObject.setGambar(m.getGambar());
-//                    updateObject.setJumlah(lastQty);
-//                    updateObject.setNama(m.getNama());
-//                    crudCart.update(updateObject);
-//                    crudCart.commitObject();
-//                    //.updateJumlah(m.getId(), lastQty, Integer.valueOf(m.getHarga())*lastQty);
-//                }
-//            }
-//        });
     }
 
     @Override

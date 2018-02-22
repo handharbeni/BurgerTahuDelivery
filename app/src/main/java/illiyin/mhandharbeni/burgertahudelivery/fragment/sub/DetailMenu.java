@@ -2,6 +2,7 @@ package illiyin.mhandharbeni.burgertahudelivery.fragment.sub;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -22,6 +23,7 @@ import io.realm.RealmResults;
  */
 
 public class DetailMenu extends AppCompatActivity {
+    private static final String TAG = "DETAIL MENU";
     ModelMenu modelMenu;
     Crud crud;
     Integer idMenu;
@@ -34,6 +36,7 @@ public class DetailMenu extends AppCompatActivity {
 
     private ModelCart modelCart;
     private Crud crudCart;
+    private ImageView imageBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +53,8 @@ public class DetailMenu extends AppCompatActivity {
             finish();
         }
 
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.itemdetail);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         title = (TextView) findViewById(R.id.title);
         image = (ImageView) findViewById(R.id.image);
@@ -63,7 +66,13 @@ public class DetailMenu extends AppCompatActivity {
                 addItemToCart();
             }
         });
-
+        imageBack = (ImageView) findViewById(R.id.imageBack);
+        imageBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         getDataDetail();
 
     }
@@ -100,6 +109,7 @@ public class DetailMenu extends AppCompatActivity {
                 newCart.setJumlah(iQty);
                 newCart.setSha(menu.getSha());
                 crudCart.create(newCart);
+                showToast("Berhasil ditambahkan kedalam keranjang");
             }
         }else{
             int lastQty = iQty;
@@ -108,21 +118,30 @@ public class DetailMenu extends AppCompatActivity {
             lastQty += lastModelCart.getJumlah();
             RealmResults resultz = crud.read("id", idMenu);
             if (results.size() > 0){
-                ModelMenu menu = (ModelMenu) resultz.get(0);
-                crudCart.openObject();
-                ModelCart updateObject = (ModelCart) crudCart.getRealmObject("id", idMenu);
-                updateObject.setSha(menu.getSha());
-                updateObject.setKategori(menu.getKategori());
-                updateObject.setHarga(menu.getHarga());
-                updateObject.setGambar(menu.getGambar());
-                updateObject.setJumlah(lastQty);
-                updateObject.setNama(menu.getNama());
-                crudCart.update(updateObject);
-                crudCart.commitObject();
+                try {
+                    ModelMenu menu = (ModelMenu) resultz.get(0);
+                    crudCart.openObject();
+//                    ModelCart updateObject = (ModelCart) crudCart.getRealmObject("id", idMenu);
+                    lastModelCart.setSha(menu.getSha());
+                    lastModelCart.setKategori(menu.getKategori());
+                    lastModelCart.setHarga(menu.getHarga());
+                    lastModelCart.setGambar(menu.getGambar());
+                    lastModelCart.setJumlah(lastQty);
+                    lastModelCart.setNama(menu.getNama());
+                    crudCart.update(lastModelCart);
+                    crudCart.commitObject();
+                    showToast("Berhasil menambah jumlah menu");
+                }catch (Exception e){
+                    Log.d(TAG, "addItemToCart: "+e.getMessage());
+                    showToast("Gagal menambah jumlah menu");
+                }
+//                Log.d(TAG, "addItemToCart: "+menu.getKategori());
             }
         }
+    }
 
-        Toast.makeText(this, "Berhasil ditambahkan ke keranjang", Toast.LENGTH_SHORT).show();
+    private void showToast(String message){
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     private void rateMenu(){

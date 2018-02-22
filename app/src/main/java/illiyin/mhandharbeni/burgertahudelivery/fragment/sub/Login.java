@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.pddstudio.preferences.encrypted.EncryptedPreferences;
 
@@ -83,6 +84,7 @@ public class Login extends AppCompatActivity implements SessionListener {
                     .addFormDataPart("password", sPassword)
                     .build();
             String response = callHttp.post(headServer, requestBody);
+            Log.d(TAG, "doLogin: "+response);
             try {
                 JSONObject jsonObject = new JSONObject(response);
                 Boolean returns = jsonObject.getBoolean("return");
@@ -92,8 +94,10 @@ public class Login extends AppCompatActivity implements SessionListener {
                     String key = jsonObject.getString("access_token");
                     session.setSession(nama, "", "", email, key, "1");
                 }else{
+                    //{"return":false,"error_message":"Email atau password salah!"}
                     SnackBar snackBar = new SnackBar(getApplicationContext(), this);
-                    snackBar.show("Login Gagal");
+                    snackBar.show(jsonObject.getString("error_message"));
+                    showToast(jsonObject.getString("error_message"));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -105,6 +109,10 @@ public class Login extends AppCompatActivity implements SessionListener {
                 input_password.setError("Tidak Boleh Kosong");
             }
         }
+    }
+
+    private void showToast(String message){
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override

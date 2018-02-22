@@ -153,8 +153,9 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.MyView
     }
 
     public void updateItemTemp(int id, int qty){
+        RealmResults results = crudCart.read("id", id);
+        ModelCart cart = (ModelCart) results.get(0);
         crudCart.openObject();
-        ModelCart cart = (ModelCart) crudCart.getRealmObject("id", id);
         cart.setJumlah(qty);
         crudCart.update(cart);
         crudCart.commitObject();

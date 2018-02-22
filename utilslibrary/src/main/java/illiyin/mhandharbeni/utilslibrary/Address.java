@@ -29,12 +29,12 @@ public class Address {
         this.callHttp = new CallHttp(mContext);
     }
 
-    public Integer getDistance(String addres1, String addres2){
+    public Integer getDistance(String addres1, String addres2, String keyDistance){
         String address = addres1;
         String preaddress = addres2;
         Integer valuesm = 0;
             /*url */
-        String urlx = "https://maps.googleapis.com/maps/api/distancematrix/json?origins="+address+"&destinations="+preaddress+"&key=AIzaSyDhOfaPFLAfGaIckHLT73PWhXd0jNEDYqA";
+        String urlx = "https://maps.googleapis.com/maps/api/distancematrix/json?origins="+address+"&destinations="+preaddress+"&key="+keyDistance;
 //        Log.d(TAG, "getDistance: "+urlx);
         String response = callHttp.get(urlx);
 //        Log.d(TAG, "getDistance: "+response);

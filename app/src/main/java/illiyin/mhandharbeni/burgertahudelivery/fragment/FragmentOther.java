@@ -31,7 +31,7 @@ public class FragmentOther extends Fragment implements SessionListener {
     private Session session;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
         v = inflater.inflate(R.layout._layoutother, container, false);
         session = new Session(getActivity().getApplicationContext(), this);
 
@@ -70,6 +70,7 @@ public class FragmentOther extends Fragment implements SessionListener {
                 @Override
                 public void onClick(View v) {
                     session.deleteSession();
+                    onCreateView(inflater, container, savedInstanceState);
                 }
             });
             castElementTextView(orderhistory, R.id.orderhistory, v).setOnClickListener(new View.OnClickListener() {

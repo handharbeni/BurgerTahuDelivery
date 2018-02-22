@@ -1,9 +1,12 @@
 package illiyin.mhandharbeni.burgertahudelivery.fragment.sub;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.StrictMode;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -46,8 +50,8 @@ import illiyin.mhandharbeni.realmlibrary.Crud;
 import illiyin.mhandharbeni.sessionlibrary.Session;
 import illiyin.mhandharbeni.sessionlibrary.SessionListener;
 import io.realm.RealmResults;
-import okhttp3.FormBody;
-import okhttp3.RequestBody;
+import okhttp3.*;
+
 
 /**
  * Created by root on 25/07/17.
@@ -85,6 +89,7 @@ public class Cart extends AppCompatActivity implements CartUtil, SessionListener
     private List<ModelAddress> sortOutlet;
 
     private String endpointorder;
+    private ProgressDialog dialog;
 
 
     @Override
@@ -103,6 +108,7 @@ public class Cart extends AppCompatActivity implements CartUtil, SessionListener
         endpointorder = getString(R.string.module_server)+"users/order";
 
         modelCart = new ModelCart();
+        dialog = new ProgressDialog(this);
         crudCart = new Crud(this, modelCart);
         modelOutlet = new ModelOutlet();
         crudOutlet = new Crud(this, modelOutlet);
@@ -135,7 +141,8 @@ public class Cart extends AppCompatActivity implements CartUtil, SessionListener
         btnOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                doOrder();
+                new doOrderTask().execute();
+//                doOrder();
             }
         });
 
@@ -149,6 +156,25 @@ public class Cart extends AppCompatActivity implements CartUtil, SessionListener
         setInfoOutlet();
         updateInfo();
     }
+
+    @Override
+    protected void onDestroy() {
+//        dismissDialog();
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onPause() {
+        dismissDialog();
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        dismissDialog();
+        super.onStop();
+    }
+
     public void initOutlet(){
         outlet = new ArrayList<>();
         RealmResults results = crudOutlet.read();
@@ -245,7 +271,7 @@ public class Cart extends AppCompatActivity implements CartUtil, SessionListener
 
             String addresoutlet = address.getCurrentAddress(latOutlet, longOutlet);
             String addrescustomer = address.getCurrentAddress(latdesti, longdesti);
-            Integer distance = address.getDistance(addres1, addres2);
+            Integer distance = address.getDistance(addres1, addres2, getString(R.string.keyDistance));
 
             sortOutlet.add(new ModelAddress(distance, outlet.get(i).getAlamat(), id_outlet, latOutlet, longOutlet));
         }
@@ -260,9 +286,9 @@ public class Cart extends AppCompatActivity implements CartUtil, SessionListener
                 return o1.getDistance().compareTo(o2.getDistance());
             }
         });
-        Log.d(TAG, "sortOutlets: "+session.getCustomParams(ADDRESSDESTI, ""));
-        Log.d(TAG, "sortOutlets: "+session.getCustomParams(LATDESTI, ""));
-        Log.d(TAG, "sortOutlets: "+session.getCustomParams(LONGDESTI, ""));
+//        Log.d(TAG, "sortOutlets: "+session.getCustomParams(ADDRESSDESTI, ""));
+//        Log.d(TAG, "sortOutlets: "+session.getCustomParams(LATDESTI, ""));
+//        Log.d(TAG, "sortOutlets: "+session.getCustomParams(LONGDESTI, ""));
         for (int i =0;i<sortOutlet.size();i++){
             Log.d(TAG, "sortOutlets: "+sortOutlet.get(i).getDistance()+"/"+sortOutlet.get(i).getAlamat());
         }
@@ -326,15 +352,20 @@ public class Cart extends AppCompatActivity implements CartUtil, SessionListener
             Boolean returns = jsonObject.getBoolean("return");
             if (returns){
                 Integer id_order = jsonObject.getInt("data");
-                postItemOrder(id_order);
-                finish();
-            }else{
-
+//                postItemOrder(id_order);
             }
-        } catch (JSONException e) {
+        } catch (NullPointerException | JSONException e) {
             e.printStackTrace();
         }
 
+    }
+    private void deleteAllRealm(){
+//        runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+                crudCart.deleteAll(ModelCart.class);
+//            }
+//        });
     }
     private void postItemOrder(Integer id) throws JSONException {
         AdapterModel adapterModel = new AdapterModel(this);
@@ -362,9 +393,10 @@ public class Cart extends AppCompatActivity implements CartUtil, SessionListener
                 JSONObject jsonObject = new JSONObject(response);
                 boolean returns = jsonObject.getBoolean("return");
                 if (returns){
+                    Toast.makeText(this, "Pesanan Anda Sedang Diproses, Terima Kasih", Toast.LENGTH_SHORT).show();
                     /*add item succesfully*/
                     /*delete from local*/
-                    crudCart.delete("id", mc.getId());
+//                    crudCart.delete("id", mc.getId());
                 }
             }
         }
@@ -381,6 +413,24 @@ public class Cart extends AppCompatActivity implements CartUtil, SessionListener
         }
     }
 
+    public void showDialog(){
+        dialog.setMessage("ORDERING, PLEASE WAIT");
+        dialog.setCancelable(false);
+        dialog.show();
+    }
+
+    public Boolean statusDialog(){
+        return dialog.isShowing();
+    }
+
+    public void dismissDialog(){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                dialog.dismiss();
+            }
+        });
+    }
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -389,5 +439,29 @@ public class Cart extends AppCompatActivity implements CartUtil, SessionListener
 //        ((MainActivity)getParent()).changeFragmentAndBottomBar(fragment, position);
 //        MainActivity.changeFragmentAndBottomBar(fragment, position);
 //        finish();
+    }
+    class doOrderTask extends AsyncTask<String, Void, Boolean> {
+        doOrderTask(){
+            dialog = new ProgressDialog(Cart.this);
+        }
+
+        protected void onPreExecute() {
+            showDialog();
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+//            super.onPostExecute(aBoolean);
+            if (statusDialog()){
+                deleteAllRealm();
+                dismissDialog();
+            }
+        }
+
+        @Override
+        protected Boolean doInBackground(String... strings) {
+            doOrder();
+            return true;
+        }
     }
 }
